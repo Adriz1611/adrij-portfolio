@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -6,12 +6,18 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const skills = [
-  { name: "MongoDB", src: "/mongo.png", color: "#4DB33D" },
-  { name: "Express.js", src: "/express.png", color: "#000000" },
   { name: "React.js", src: "/react.png", color: "#61DAFB" },
+  { name: "Next.js", src: "/nextjs-logo.webp", color: "#303030" },
+  { name: "Tailwind", src: "/tailwind.webp", color: "#3490dc" },
   { name: "Node.js", src: "/node.png", color: "#339933" },
+  { name: "Express.js", src: "/express.png", color: "#303030" },
+  { name: "Nest.js", src: "/nestjs.svg", color: "#e0224e" },
+  { name: "MongoDB", src: "/mongo.png", color: "#4DB33D" },
+  { name: "Supabase", src: "/supabase-logo-vector.png", color: "#3fcf8f" },
+  { name: "Github", src: "/github.png", color: "#303030" },
   { name: "C/C++ (OOP/DSA)", src: "/c++.png", color: "#00599C" },
-  { name: "Unix", src: "/unix.jpg", color: "#FF4500" },
+  { name: "Docker", src: "/docker.png", color: "#0db7ed" },
+  { name: "Unix", src: "/unix.jpg", color: "#fec412" },
 ];
 
 const SkillCard = ({ skill, index }) => {
@@ -90,6 +96,11 @@ const Skills = () => {
     },
   };
 
+  // Divide skills into rows
+  const firstRow = skills.slice(0, 5);
+  const secondRow = skills.slice(5, 9);
+  const thirdRow = skills.slice(9);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 py-16">
       <div className="container mx-auto px-4">
@@ -102,10 +113,22 @@ const Skills = () => {
         >
           Skills
         </motion.h1>
-        <div className="flex flex-wrap justify-center items-center">
-          {skills.map((skill, index) => (
-            <SkillCard key={skill.name} skill={skill} index={index} />
-          ))}
+        <div className="flex flex-col items-center">
+          <div className="flex flex-wrap justify-center items-center mb-8">
+            {firstRow.map((skill, index) => (
+              <SkillCard key={skill.name} skill={skill} index={index} />
+            ))}
+          </div>
+          <div className="flex flex-wrap justify-center items-center mb-8">
+            {secondRow.map((skill, index) => (
+              <SkillCard key={skill.name} skill={skill} index={index + 5} />
+            ))}
+          </div>
+          <div className="flex flex-wrap justify-center items-center">
+            {thirdRow.map((skill, index) => (
+              <SkillCard key={skill.name} skill={skill} index={index + 9} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
