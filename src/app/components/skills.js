@@ -60,8 +60,8 @@ const SkillCard = ({ skill, index }) => {
         <Image
           src={skill.src}
           alt={skill.name}
-          layout="fill"
-          objectFit="contain"
+          fill={true} // Updated for Next.js 13
+          style={{ objectFit: "contain" }} // Updated for Next.js 13
           className="rounded-full"
         />
       </div>

@@ -6,6 +6,8 @@ import Skills from "@/app/components/skills";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import Projects from "./components/projects";
+import Navbar from "./components/navbar";
+import ContactForm from "./components/contactform";
 
 const TerminalText = ({ children, delay = 0 }) => {
   const [displayedText, setDisplayedText] = useState("");
@@ -22,11 +24,7 @@ const TerminalText = ({ children, delay = 0 }) => {
     return () => clearTimeout(timer);
   }, [children, currentIndex, delay]);
 
-  return (
-    <span className="terminal-text">
-      {displayedText}
-    </span>
-  );
+  return <span className="terminal-text">{displayedText}</span>;
 };
 
 export default function Home() {
@@ -59,8 +57,9 @@ export default function Home() {
           font-family: "Courier New", Courier, monospace;
         }
       `}</style>
-      <div className="relative w-full min-h-screen bg-cover bg-center bg-fixed">
 
+      <div className="relative w-full min-h-screen bg-cover bg-center bg-fixed">
+        <Navbar />
 
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="container mx-auto px-4 py-8 md:py-16">
@@ -86,12 +85,13 @@ export default function Home() {
                 <ul className="list-disc list-inside mt-2 space-y-2">
                   <li>
                     <TerminalText delay={15}>
-                      Mastering the art of Web3 technologies
+                      Building responsive web applications with modern
+                      technologies
                     </TerminalText>
                   </li>
                   <li>
                     <TerminalText delay={15}>
-                      Exploring the synergies between DevOps and MLOps
+                      Exploring the synergies of DevOps
                     </TerminalText>
                   </li>
                   <li>
@@ -181,6 +181,7 @@ export default function Home() {
       >
         <Skills />
         <Projects />
+        <ContactForm />
       </motion.div>
     </div>
   );
