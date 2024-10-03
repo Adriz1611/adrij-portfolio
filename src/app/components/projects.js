@@ -24,7 +24,8 @@ const projects = [
   },
   {
     title: "Portfolio",
-    description: "My personal portfolio website.",
+    description:
+      "This is my Portfolio. It gives an overview of my skills, projects, and contact information. Feel free to reach out to me. :)",
     image: "/project3.png",
     githubLink: "https://github.com/Adriz1611/adrij-portfolio",
     hostedLink: "https://adrij-portfolio.vercel.app/",

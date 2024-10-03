@@ -55,6 +55,7 @@ export default function Home() {
       <style jsx global>{`
         .terminal-text {
           font-family: "Courier New", Courier, monospace;
+          font-weight: 500;
         }
       `}</style>
       <Navbar />
@@ -68,19 +69,20 @@ export default function Home() {
                 animate={controls}
                 variants={fadeIn}
               >
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase leading-tight mb-4 mt-10 md:mt-0">
+                <h1 className="text-3xl md:text-6xl font-bold uppercase leading-tight mb-4 mt-10 md:mt-0">
                   <TerminalText>
                     Innovating the Future: Full Stack & DevOps
                   </TerminalText>
                 </h1>
-                <p className="text-sm sm:text-base md:text-lg mt-4 leading-relaxed">
+                <p className="text-sm sm:text-base md:text-xl mt-4 leading-relaxed">
                   <TerminalText delay={1}>
                     Greetings! I'm Adrij Bhadra, a sophomore at SRM IST with an
                     insatiable curiosity for Full Stack Development and DevOps.
                     My journey is defined by:
                   </TerminalText>
+                  <br></br>
                 </p>
-                <ul className="list-disc list-inside mt-2 space-y-2">
+                <ul className="text-[12px] md:text-sm list-disc list-inside mt-2 space-y-2">
                   <li>
                     <TerminalText delay={15}>
                       Building responsive web applications with modern
@@ -135,7 +137,21 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 hidden md:block">
-                  {/* Hide on mobile */}
+                  {/* Subtle graphics behind the image */}
+                  <svg className="absolute w-full h-full -z-10" viewBox="0 0 200 200">
+                    <defs>
+                      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#f3f4f6" stopOpacity="0.7" />
+                        <stop offset="100%" stopColor="#e5e7eb" stopOpacity="0.7" />
+                      </linearGradient>
+                    </defs>
+                    <circle cx="100" cy="100" r="80" fill="url(#grad1)" />
+                    <circle cx="70" cy="70" r="10" fill="#d1d5db" opacity="0.5" />
+                    <circle cx="130" cy="130" r="15" fill="#9ca3af" opacity="0.5" />
+                    <path d="M30 100 Q100 30 170 100" stroke="#6b7280" strokeWidth="2" fill="none" opacity="0.3" />
+                  </svg>
+                  
+                  {/* Image */}
                   <Image
                     src="/adrij.jpeg"
                     alt="Adrij Bhadra"
