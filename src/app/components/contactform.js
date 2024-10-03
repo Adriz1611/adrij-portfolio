@@ -93,13 +93,12 @@ const ContactForm = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-3 px-6 bg-slate-500 text-white font-semibold rounded-md shadow-md hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transition duration-300"
+            className="w-full py-3 px-6 bg-gray-700 text-white font-semibold rounded-md shadow-md hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transition duration-300"
           >
             Send message
           </button>
         </form>
 
-        {/* React Toastify Container */}
         <ToastContainer />
       </div>
     </div>

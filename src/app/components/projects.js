@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,9 +31,38 @@ const projects = [
   },
 ];
 
+const projectVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1 },
+};
+
 export default function Projects() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Stop observing once it's visible
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% of the section is visible
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-gray-900">
+    <div
+      className="min-h-screen flex items-center justify-center bg-white text-gray-900"
+      ref={sectionRef}
+    >
       <div className="container mx-auto px-6 py-16">
         <h1 className="text-5xl font-bold text-center mb-12 tracking-wide">
           My Projects
@@ -42,6 +72,10 @@ export default function Projects() {
             <motion.div
               key={index}
               className="bg-white border-[1px] border-gray-300 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300"
+              initial="hidden"
+              animate={isVisible ? "visible" : "hidden"}
+              variants={projectVariants}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
               whileHover={{ scale: 1.03 }}
             >
               <Image
@@ -53,8 +87,8 @@ export default function Projects() {
               />
               <div className="p-6 flex flex-col justify-between">
                 <div>
-                <h2 className="text-2xl font-bold mb-3">{project.title}</h2>
-                <p className="text-gray-600 mb-6">{project.description}</p>
+                  <h2 className="text-2xl font-bold mb-3">{project.title}</h2>
+                  <p className="text-gray-600 mb-6">{project.description}</p>
                 </div>
                 <div className="flex justify-between items-center space-x-4">
                   <Link
