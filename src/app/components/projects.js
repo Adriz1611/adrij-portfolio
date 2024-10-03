@@ -51,9 +51,11 @@ export default function Projects() {
                 height={300}
                 className="rounded-t-xl"
               />
-              <div className="p-6">
+              <div className="p-6 flex flex-col justify-between">
+                <div>
                 <h2 className="text-2xl font-bold mb-3">{project.title}</h2>
                 <p className="text-gray-600 mb-6">{project.description}</p>
+                </div>
                 <div className="flex justify-between items-center space-x-4">
                   <Link
                     href={project.githubLink}

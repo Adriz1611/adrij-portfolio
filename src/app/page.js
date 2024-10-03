@@ -57,12 +57,10 @@ export default function Home() {
           font-family: "Courier New", Courier, monospace;
         }
       `}</style>
-
-      <div className="relative w-full min-h-screen bg-cover bg-center bg-fixed">
-        <Navbar />
-
+      <Navbar />
+      <div className="w-full min-h-screen">
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="container mx-auto px-4 py-8 md:py-16">
+          <div className="container mx-auto px-4 md:py-16 pt-[20px]">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <motion.div
                 className="w-full md:w-1/2 mb-8 md:mb-0"
@@ -136,7 +134,8 @@ export default function Home() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80">
+                <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 hidden md:block">
+                  {/* Hide on mobile */}
                   <Image
                     src="/adrij.jpeg"
                     alt="Adrij Bhadra"
@@ -180,7 +179,30 @@ export default function Home() {
         transition={{ delay: 0.8, duration: 0.6 }}
       >
         <Skills />
+      </motion.div>
+      <motion.div
+        id="skills-section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+      >
+        <Skills />
+      </motion.div>
+      <motion.div
+        id="projects-section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+      >
         <Projects />
+      </motion.div>
+
+      <motion.div
+        id="contact-section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+      >
         <ContactForm />
       </motion.div>
     </div>
