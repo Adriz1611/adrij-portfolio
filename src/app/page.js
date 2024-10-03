@@ -181,14 +181,6 @@ export default function Home() {
         <Skills />
       </motion.div>
       <motion.div
-        id="skills-section"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.6 }}
-      >
-        <Skills />
-      </motion.div>
-      <motion.div
         id="projects-section"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
