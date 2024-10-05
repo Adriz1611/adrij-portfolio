@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Skills from "@/app/components/skills";
 import Image from "next/image";
@@ -8,24 +8,6 @@ import { ChevronDown } from "lucide-react";
 import Projects from "./components/projects";
 import Navbar from "./components/navbar";
 import ContactForm from "./components/contactform";
-
-const TerminalText = ({ children, delay = 0 }) => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (currentIndex < children.length) {
-        setDisplayedText((prevText) => prevText + children[currentIndex]);
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-      }
-    }, 30 + delay); // Adjust typing speed here
-
-    return () => clearTimeout(timer);
-  }, [children, currentIndex, delay]);
-
-  return <span className="terminal-text">{displayedText}</span>;
-};
 
 export default function Home() {
   const controls = useAnimation();
@@ -53,9 +35,8 @@ export default function Home() {
   return (
     <div className="min-h-screen overflow-hidden bg-white text-black">
       <style jsx global>{`
-        .terminal-text {
-          font-family: "Courier New", Courier, monospace;
-          font-weight: 500;
+        body {
+          font-family: "Inter", sans-serif;
         }
       `}</style>
       <Navbar />
@@ -69,42 +50,36 @@ export default function Home() {
                 animate={controls}
                 variants={fadeIn}
               >
-                <h1 className="text-3xl md:text-6xl font-bold uppercase leading-tight mb-4 mt-10 md:mt-0">
-                  <TerminalText>
-                    Innovating the Future: Full Stack & DevOps
-                  </TerminalText>
-                </h1>
-                <p className="text-sm sm:text-base md:text-xl mt-4 leading-relaxed">
-                  <TerminalText delay={1}>
-                    Greetings! I'm Adrij Bhadra, a sophomore at SRM IST with an
-                    insatiable curiosity for Full Stack Development and DevOps.
-                    My journey is defined by:
-                  </TerminalText>
-                  <br></br>
-                </p>
+                <motion.h1
+                  className="text-3xl md:text-6xl font-bold uppercase leading-tight mb-4 mt-10 md:mt-0"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  Innovating the Future: Full Stack & DevOps
+                </motion.h1>
+                <motion.p
+                  className="text-sm sm:text-base md:text-xl mt-4 leading-relaxed"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  Greetings! I'm Adrij Bhadra, a sophomore at SRM IST with an
+                  insatiable curiosity for Full Stack Development and DevOps. My
+                  journey is defined by:
+                </motion.p>
                 <ul className="text-[12px] md:text-sm list-disc list-inside mt-2 space-y-2">
                   <li>
-                    <TerminalText delay={15}>
-                      Building responsive web applications with modern
-                      technologies
-                    </TerminalText>
+                    Building responsive web applications with modern
+                    technologies
+                  </li>
+                  <li>Exploring the synergies of DevOps</li>
+                  <li>
+                    Driving innovation through cutting-edge development
+                    practices
                   </li>
                   <li>
-                    <TerminalText delay={15}>
-                      Exploring the synergies of DevOps
-                    </TerminalText>
-                  </li>
-                  <li>
-                    <TerminalText delay={15}>
-                      Driving innovation through cutting-edge development
-                      practices
-                    </TerminalText>
-                  </li>
-                  <li>
-                    <TerminalText delay={15}>
-                      Building scalable, efficient, and robust software
-                      solutions
-                    </TerminalText>
+                    Building scalable, efficient, and robust software solutions
                   </li>
                 </ul>
 
@@ -137,20 +112,6 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 hidden md:block">
-                  {/* Subtle graphics behind the image */}
-                  <svg className="absolute w-full h-full -z-10" viewBox="0 0 200 200">
-                    <defs>
-                      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#f3f4f6" stopOpacity="0.7" />
-                        <stop offset="100%" stopColor="#e5e7eb" stopOpacity="0.7" />
-                      </linearGradient>
-                    </defs>
-                    <circle cx="100" cy="100" r="80" fill="url(#grad1)" />
-                    <circle cx="70" cy="70" r="10" fill="#d1d5db" opacity="0.5" />
-                    <circle cx="130" cy="130" r="15" fill="#9ca3af" opacity="0.5" />
-                    <path d="M30 100 Q100 30 170 100" stroke="#6b7280" strokeWidth="2" fill="none" opacity="0.3" />
-                  </svg>
-                  
                   {/* Image */}
                   <Image
                     src="/adrij.jpeg"
